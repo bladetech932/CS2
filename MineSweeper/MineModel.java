@@ -1,6 +1,6 @@
 import javax.swing.JOptionPane;
 class MineModel {
-  
+
   MineViewer viewer;
   public static final int CUSTOM = 0;
   private int customXGrid = 0; //may need later
@@ -24,7 +24,8 @@ class MineModel {
   private char[][] mineField;
   private char[][] playField;
 
-  public MineModel() {}
+  public MineModel() {
+  }
   public MineModel(int[] customSettings) { //for custom game selection
     customMineCount = customSettings[2];
     mineField = new char[customSettings[0]][customSettings[1]];
@@ -61,14 +62,28 @@ class MineModel {
   public int getColumns() {
     return playField[0].length;
   }
+  public void setMine(int mineCount, int height, int width){
+    int x;
+    int y;
+     x = (int)(Math.random()*height);
+     y = (int)(Math.random()*width);
 
+     if(mineField[x][y] != 'M'){
+       mineField[x][y] = 'M';
+     }
+     else{setMine(mineCount,getRows(),getColumns());}
+
+  }
   public void setFlag(int x, int y) {
-    playField[x][y] = 'F'
+  //  playField[x][y] = 'F';
   }
   public void mineCheck(int x, int y) {
-    if (mineField[x][y]=='M') {
+    //if (mineField[x][y]=='M') {
 
-    }
+    //}
+  }
+  public double[][] getMineField(){
+    return mineField;
   }
 
 }
